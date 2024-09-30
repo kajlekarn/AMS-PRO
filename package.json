@@ -1,0 +1,56 @@
+{
+  "name": "ams-pro",
+  "version": "0.0.0",
+  "engines": {
+    "node": "20.17.0"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "netlify-build": "npm run build"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^16.2.0",
+    "@angular/cdk": "^16.2.0",
+    "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/material": "^16.2.0",
+    "@angular/platform-browser": "^16.2.0",
+    "@angular/platform-browser-dynamic": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@types/chart.js": "^2.9.37",
+    "chart.js": "^4.3.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.5.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^16.0.0",
+    "@angular-devkit/build-angular": "^16.2.0",
+    "@angular/cli": "^16.2.0",
+    "@angular/compiler-cli": "^16.2.0",
+    "angular-cli-ghpages": "^2.0.1",
+    "autoprefixer": "^10.4.14",
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.5",
+    "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
+    "postcss-loader": "^7.3.0",
+    "style-loader": "^3.3.2",
+    "typescript": "~5.1.3"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.",
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC",
+  "resolutions": {
+    "gh-pages": "^5.0.0"
+  }
+}

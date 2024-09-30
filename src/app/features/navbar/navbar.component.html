@@ -1,0 +1,19 @@
+<aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
+  <button type="button" id="toggleSidebar" (click)="toggleSidebar()" aria-label="Toggle Sidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+  <!-- <div class="logo">AMS <span>Pro</span></div> -->
+  <ul class="nav-menu">
+    <li class="nav-item"><a routerLink="/dashboard" routerLinkActive="active" class="nav-link"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+    <li class="nav-item"><a routerLink="/employees" routerLinkActive="active" class="nav-link"><i class="fas fa-users"></i> <span>Employees</span></a></li>
+    <li class="nav-item">
+      <a [routerLink]="['/attendance']" routerLinkActive="active" class="nav-link">
+        <i class="fas fa-clock"></i> <span>Attendance</span>
+      </a>
+    </li>
+    <li class="nav-item"><a routerLink="/leave" routerLinkActive="active" class="nav-link"><i class="fas fa-calendar-alt"></i> <span>Leave</span></a></li>
+    <li class="nav-item"><a routerLink="/reports" routerLinkActive="active" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+    <li class="nav-item"><a routerLink="/settings" routerLinkActive="active" class="nav-link"><i class="fas fa-cogs"></i> <span>Settings</span></a></li>
+    <li class="nav-item"><a (click)="logout()" class="nav-link"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+  </ul>
+</aside>

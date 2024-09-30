@@ -1,0 +1,46 @@
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.app-container.login-page {
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Remove the background-pattern from here as it's now in the login component */
+
+/* ... rest of your existing styles ... */
+
+.main-content {
+    flex: 1;
+    margin-left: 250px; /* Match the width of the expanded sidebar */
+    transition: margin-left 0.3s;
+    padding: 2rem;
+}
+
+.main-content.expanded {
+    margin-left: 80px; /* Match the width of the collapsed sidebar */
+}
+
+@media (max-width: 768px) {
+    .main-content,
+    .main-content.expanded {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}

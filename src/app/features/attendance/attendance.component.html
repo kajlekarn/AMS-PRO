@@ -1,0 +1,54 @@
+<div class="attendance-container">
+  <header class="header">
+    <h1>Attendance Management</h1>
+    <div class="date-picker">
+      <label for="attendanceDate">Attendance Date:</label>
+      <input type="date" id="attendanceDate" [(ngModel)]="currentDate">
+    </div>
+  </header>
+
+  <section class="attendance-section fade-in">
+    <div class="attendance-controls">
+      <button (click)="openManualEntryModal()" class="btn">
+        <i class="fas fa-plus"></i> Manual Entry
+      </button>
+      <button (click)="openShiftChangeModal()" class="btn">
+        <i class="fas fa-exchange-alt"></i> Shift Change
+      </button>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Clock In</th>
+          <th>Clock Out</th>
+          <th>Total Hours</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of attendanceData" class="fade-in">
+          <td>{{ entry.employeeId }}</td>
+          <td>{{ entry.name }}</td>
+          <td>{{ entry.department }}</td>
+          <td>{{ entry.clockIn }}</td>
+          <td>{{ entry.clockOut }}</td>
+          <td>{{ entry.totalHours }}</td>
+          <td><span class="status-badge status-{{ entry.status.toLowerCase() }}">{{ entry.status }}</span></td>
+          <td>
+            <button type="button" (click)="editAttendance(entry.id)" class="btn-small btn-edit" aria-label="Edit attendance">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button type="button" (click)="deleteAttendance(entry.id)" class="btn-small btn-danger" aria-label="Delete attendance">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

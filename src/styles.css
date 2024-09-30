@@ -1,0 +1,200 @@
+@import url('@angular/material/prebuilt-themes/indigo-pink.css');
+@import url('@fortawesome/fontawesome-free/css/all.min.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Remove this line as it's already in angular.json */
+/* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --background-color: #f4f7f9;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Add this to your global styles or component-specific styles */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links li a:hover {
+  background-color: #34495e;
+}
+
+.nav-links li a i {
+  margin-right: 10px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #3498db;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.search-bar {
+  margin-left: 20px;
+}
+
+.search-bar input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+main {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Add these styles at the end of the file */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.app-container.login-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mat-dialog-container {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Custom dialog styles */
+.custom-dialog .mat-mdc-dialog-container {
+  padding: 0;
+}
+
+.custom-dialog .mat-mdc-dialog-surface {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Ensure the dialog is centered and has a backdrop */
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+}
+
+.cdk-overlay-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+    /* ... existing styles ... */
+    width: 90%;
+    max-width: 800px; /* Increased from 600px */
+}
+
+@media (min-width: 1200px) {
+    .modal-content {
+        max-width: 1000px; /* Even wider for larger screens */
+    }
+}

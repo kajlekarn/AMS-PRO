@@ -1,0 +1,172 @@
+<div class="dashboard-container">
+    <header class="header">
+      <h1>Dashboard</h1>
+      <div class="header-controls">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="onSearch()">
+        </div>
+        <div class="notification-icon" (click)="toggleNotifications($event)">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge" *ngIf="unreadNotifications > 0">{{ unreadNotifications }}</span>
+        </div>
+      </div>
+      <!-- Move the notification panel here -->
+      <div class="notification-panel" *ngIf="showNotifications" [@notificationAnimation]>
+        <h3>Notifications</h3>
+        <ng-container *ngIf="notifications.length > 0; else noNotifications">
+          <ul>
+            <li *ngFor="let notification of notifications" 
+                [class.unread]="!notification.read" 
+                [class]="notification.type"
+                (click)="markAsRead(notification)"
+                [@notificationAnimation]>
+              <i class="fas" [ngClass]="{
+                'fa-info-circle': notification.type === 'info',
+                'fa-exclamation-triangle': notification.type === 'warning',
+                'fa-check-circle': notification.type === 'success',
+                'fa-times-circle': notification.type === 'error'
+              }"></i>
+              <div class="notification-content">
+                <span class="notification-message">{{ notification.message }}</span>
+                <span class="notification-time">{{ notification.time | date:'short' }}</span>
+              </div>
+              <button class="remove-notification" (click)="removeNotification(notification.id); $event.stopPropagation()"
+                      aria-label="Remove notification">
+                <i class="fas fa-times"></i>
+              </button>
+            </li>
+          </ul>
+          <div class="notification-actions">
+            <button *ngIf="unreadNotifications > 0" (click)="markAllAsRead()">Mark all as read</button>
+          </div>
+        </ng-container>
+        <ng-template #noNotifications>
+          <div class="no-notifications">
+            <i class="fas fa-bell-slash"></i>
+            <p>No new notifications</p>
+            <small>When you have notifications, they will appear here.</small>
+          </div>
+        </ng-template>
+      </div>
+    </header>
+  
+    <!-- Add this block for the notification panel -->
+    <div class="notification-panel" *ngIf="showNotifications" [@notificationAnimation]>
+      <h3>Notifications</h3>
+      <ng-container *ngIf="notifications.length > 0; else noNotifications">
+        <ul>
+          <li *ngFor="let notification of notifications" 
+              [class.unread]="!notification.read" 
+              [class]="notification.type"
+              (click)="markAsRead(notification)"
+              [@notificationAnimation]>
+            <i class="fas" [ngClass]="{
+              'fa-info-circle': notification.type === 'info',
+              'fa-exclamation-triangle': notification.type === 'warning',
+              'fa-check-circle': notification.type === 'success',
+              'fa-times-circle': notification.type === 'error'
+            }"></i>
+            <div class="notification-content">
+              <span class="notification-message">{{ notification.message }}</span>
+              <span class="notification-time">{{ notification.time | date:'short' }}</span>
+            </div>
+            <button class="remove-notification" (click)="removeNotification(notification.id); $event.stopPropagation()"
+                    aria-label="Remove notification">
+              <i class="fas fa-times"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="notification-actions">
+          <button *ngIf="unreadNotifications > 0" (click)="markAllAsRead()">Mark all as read</button>
+        </div>
+      </ng-container>
+      <ng-template #noNotifications>
+        <div class="no-notifications">
+          <i class="fas fa-bell-slash"></i>
+          <p>No new notifications</p>
+          <small>When you have notifications, they will appear here.</small>
+        </div>
+      </ng-template>
+    </div>
+  
+    <section class="dashboard-stats">
+      <div class="stat-card">
+        <h3>Present Employees</h3>
+        <p>{{ presentCount }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Absent Employees</h3>
+        <p>{{ absentCount }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Late Employees</h3>
+        <p>{{ lateCount }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>On Leave</h3>
+        <p>{{ leaveCount }}</p>
+      </div>
+    </section>
+  
+    <section class="chart-container">
+      <canvas id="attendanceChart"></canvas>
+    </section>
+  
+    <section class="data-table">
+      <div class="table-controls">
+        <div class="table-filter">
+          <label for="statusFilter">Filter by Status:</label>
+          <select id="statusFilter" [(ngModel)]="statusFilter" (change)="onStatusFilterChange()">
+            <option value="All">All</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+            <option value="Late">Late</option>
+            <option value="On Leave">On Leave</option>
+          </select>
+        </div>
+        <div class="table-search">
+          <label for="searchInput">Search:</label>
+          <input type="text" id="searchInput" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search...">
+        </div>
+        <div class="table-page-size">
+          <label for="pageSizeSelect">Items per page:</label>
+          <select id="pageSizeSelect" [(ngModel)]="itemsPerPage" (change)="onPageSizeChange()">
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="20">20</option>
+            <option [value]="50">50</option>
+          </select>
+        </div>
+      </div>
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th (click)="onSort('name')">Employee<span class="sort-icon"></span></th>
+            <th (click)="onSort('department')">Department<span class="sort-icon"></span></th>
+            <th (click)="onSort('checkIn')">Check In<span class="sort-icon"></span></th>
+            <th (click)="onSort('checkOut')">Check Out<span class="sort-icon"></span></th>
+            <th (click)="onSort('status')">Status<span class="sort-icon"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of paginatedData">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.checkIn }}</td>
+            <td>{{ employee.checkOut }}</td>
+            <td>{{ employee.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+        <button *ngFor="let page of [].constructor(pageCount); let i = index"
+                (click)="goToPage(i + 1)"
+                [class.active]="currentPage === i + 1">
+          {{ i + 1 }}
+        </button>
+        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === pageCount">Next</button>
+      </div>
+    </section>
+  </div>

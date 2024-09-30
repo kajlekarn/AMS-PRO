@@ -1,0 +1,12 @@
+.custom-dialog-container .mat-dialog-container {
+  position: relative !important;
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+.cdk-overlay-pane {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}

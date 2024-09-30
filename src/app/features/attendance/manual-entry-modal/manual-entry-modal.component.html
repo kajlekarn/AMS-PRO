@@ -1,0 +1,47 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h2>Manual Attendance Entry</h2>
+    <button class="close-button" (click)="onCancel()">&times;</button>
+  </div>
+  <form #manualEntryForm="ngForm" (ngSubmit)="onSubmit(manualEntryForm)">
+    <div class="form-group">
+      <label for="employeeId">Employee ID</label>
+      <input id="employeeId" type="text" [(ngModel)]="data.employeeId" name="employeeId" required #employeeId="ngModel">
+      <div *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched)" class="error-message">
+        Employee ID is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="employeeName">Employee Name</label>
+      <input id="employeeName" type="text" [(ngModel)]="data.employeeName" name="employeeName" required #employeeName="ngModel">
+      <div *ngIf="employeeName.invalid && (employeeName.dirty || employeeName.touched)" class="error-message">
+        Employee Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input id="date" type="date" [(ngModel)]="data.date" name="date" required #date="ngModel">
+      <div *ngIf="date.invalid && (date.dirty || date.touched)" class="error-message">
+        Date is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="clockIn">Clock In</label>
+      <input id="clockIn" type="time" [(ngModel)]="data.clockIn" name="clockIn" required #clockIn="ngModel">
+      <div *ngIf="clockIn.invalid && (clockIn.dirty || clockIn.touched)" class="error-message">
+        Clock In time is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="clockOut">Clock Out</label>
+      <input id="clockOut" type="time" [(ngModel)]="data.clockOut" name="clockOut" required #clockOut="ngModel">
+      <div *ngIf="clockOut.invalid && (clockOut.dirty || clockOut.touched)" class="error-message">
+        Clock Out time is required.
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!manualEntryForm.form.valid">Save Entry</button>
+    </div>
+  </form>
+</div>

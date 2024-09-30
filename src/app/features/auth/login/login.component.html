@@ -1,0 +1,46 @@
+<div class="background-pattern"></div>
+<div *ngFor="let element of floatingElements" class="floating-element"
+     [ngStyle]="{
+       'width.px': element.size,
+       'height.px': element.size,
+       'left': element.left,
+       'top': element.top,
+       'animation-duration': element.duration,
+       'animation-delay': element.delay
+     }">
+</div>
+<div class="login-container">
+  <div class="logo">
+    <i class="fas fa-user-clock logo-icon"></i>
+    <!-- <div class="logo-text">AMS PRO</div> -->
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <input type="text" id="username" formControlName="username" placeholder=" " required>
+      <label for="username">Username</label>
+      <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)" class="error-message">
+        <small *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</small>
+        <small *ngIf="loginForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters long.</small>
+      </div>
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" formControlName="password" placeholder=" " required>
+      <label for="password">Password</label>
+      <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error-message">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+      </div>
+    </div>
+    <button type="submit" class="login-btn" [disabled]="loginForm.invalid || isLoading">
+      <span *ngIf="!isLoading">Login</span>
+      <span *ngIf="isLoading">Logging in...</span>
+    </button>
+  </form>
+  <div class="forgot-password">
+    <a href="#">Forgot Password?</a>
+  </div>
+  <!-- Add this after the form -->
+  <div *ngIf="loginError" class="error-message">
+    {{ loginError }}
+  </div>
+</div>

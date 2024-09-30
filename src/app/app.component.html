@@ -1,0 +1,11 @@
+<div class="app-container" [class.login-page]="isLoginPage">
+  <ng-container *ngIf="!isLoginPage">
+    <app-navbar (sidebarToggled)="onSidebarToggled($event)"></app-navbar>
+    <main class="main-content" [class.expanded]="isSidebarCollapsed">
+      <router-outlet></router-outlet>
+    </main>
+  </ng-container>
+  <ng-container *ngIf="isLoginPage">
+    <router-outlet></router-outlet>
+  </ng-container>
+</div>

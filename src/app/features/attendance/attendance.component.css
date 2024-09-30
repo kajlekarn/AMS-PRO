@@ -1,0 +1,243 @@
+:host {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.attendance-container {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: #4a90e2; /* Match the blue background in the image */
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white; /* Change to white for better contrast */
+  margin: 0;
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.date-picker label {
+  margin-right: 0.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.date-picker input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: white;
+}
+
+/* Add a custom style for the date input placeholder */
+.date-picker input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.attendance-section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-controls {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.btn i {
+  margin-right: 0.5rem;
+}
+
+.btn:hover {
+  background-color: #3a7bd5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar {
+  flex: 0 1 60%; /* Adjust this value to control the width of the search bar */
+  margin-right: 1rem;
+}
+
+.status-filter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 1 40%; /* Adjust this value to control the width of the filter section */
+}
+
+.search-bar input, .status-filter select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.status-filter label {
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.status-filter select {
+  width: auto;
+  min-width: 150px; /* Adjust this value as needed */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.data-table th,
+.data-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.data-table th {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.status-present {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.status-absent {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.status-late {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-small {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 0.5rem;
+}
+
+.btn-small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-small.btn-edit {
+  background-color: #3498db; /* Blue color for edit button */
+}
+
+.btn-small.btn-edit:hover {
+  background-color: #2980b9;
+}
+
+.btn-small.btn-danger {
+  background-color: #e74c3c; /* Red color for delete button */
+}
+
+.btn-small.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .search-bar, .status-filter {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .attendance-controls {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    margin-bottom: 0.5rem;
+  }
+}

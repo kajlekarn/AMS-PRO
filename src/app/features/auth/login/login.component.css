@@ -1,0 +1,180 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%),
+        radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%);
+    background-size: 100px 100px;
+    z-index: 0;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float 15s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 15px; /* Increased border radius */
+    padding: 50px; /* Increased padding */
+    width: 100%;
+    max-width: 450px; /* Increased max-width */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 10;
+    max-height: 95vh; /* Increased max-height */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 50px; /* Increased margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-icon {
+    font-size: 4rem; /* Increased font size */
+    color: #fff;
+    animation: pulse 2s infinite;
+    margin-bottom: 20px; /* Increased margin */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.logo-text {
+    font-size: 2.5rem; /* Increased font size */
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.3; /* Adjusted line height */
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 35px; /* Increased margin */
+    width: 100%;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 10px; /* Increased padding */
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.1rem; /* Increased font size */
+    transition: 0.3s;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #fff;
+    font-size: 1.1rem; /* Increased font size */
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-group input:focus,
+.input-group input:not(:placeholder-shown) {
+    border-bottom-color: #23a6d5;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: -20px;
+    font-size: 0.8rem;
+    color: #23a6d5;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px; /* Increased padding */
+    background-color: #23a6d5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem; /* Increased font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px; /* Added margin top */
+}
+
+.login-btn:hover {
+    background-color: #1c8ab9;
+}
+
+.forgot-password {
+    text-align: center;
+    margin-top: 25px; /* Increased margin */
+}
+
+.forgot-password a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem; /* Increased font size */
+    transition: 0.3s;
+}
+
+.forgot-password a:hover {
+    color: #23a6d5;
+}
+
+form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Add this new style for the logo text spacing */
+.logo-text span {
+    display: block;
+    margin: 5px 0; /* Add space between AMS and PRO */
+}
